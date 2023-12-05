@@ -1,0 +1,8 @@
+[
+{
+  "directory": "C:/Users/alice/Downloads/T3/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe -g -std=gnu++17 -o CMakeFiles\\main.dir\\main.cpp.obj -c C:\\Users\\alice\\Downloads\\T3\\main.cpp",
+  "file": "C:\\Users\\alice\\Downloads\\T3\\main.cpp",
+  "output": "CMakeFiles\\main.dir\\main.cpp.obj"
+}
+]
