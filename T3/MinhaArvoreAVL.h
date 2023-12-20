@@ -273,7 +273,6 @@ class MinhaArvoreAVL final : public ArvoreBinariaDeBusca<T>
                     int filhoEsqDir = get_fatorB(filhoD->filhoEsquerda->filhoDireita);
                     if(filhoEsqDir <= 0){
                         filhoD->filhoEsquerda = rot_esq_dir(filhoD);
-                        //nodo = x(nodo);
                     }    
                 }
 
