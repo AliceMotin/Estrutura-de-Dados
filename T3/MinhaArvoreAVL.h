@@ -144,10 +144,6 @@ class MinhaArvoreAVL final : public ArvoreBinariaDeBusca<T>
     }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
-//Se houver um desbalanceamento na subárvore da direita do filho da esquerda do nó, faça uma rotação dupla à direita.
-//Se houver um desbalanceamento na subárvore da esquerda do filho da direita do nó, faça uma rotação dupla à esquerda.
-//Se houver um desbalanceamento na subárvore da esquerda do filho da esquerda do nó (nodo->filhoEsq->filhoEsq), faça uma rotação simples à direita.
-//Se houver um desbalanceamento na subárvore da direita do filho da direita do nó (nodo->filhoDir->filhoDir), faça uma rotação simples à esquerda. 
 
     Nodo<T>* rot_dir_esq(Nodo<T>* nodo)
     {
@@ -157,19 +153,12 @@ class MinhaArvoreAVL final : public ArvoreBinariaDeBusca<T>
         newRaiz->filhoDireita = nodo->filhoDireita;
         nodo->filhoDireita->filhoEsquerda = oldRaiz;
 
-        //newRaiz->filhoEsquerda->altura = atualizar_altura(nodo->filhoDireita);
-        //newRaiz->altura = atualizar_altura(newRaiz);
-
         nodo->filhoDireita = newRaiz;
         newRaiz->filhoEsquerda = nodo->filhoDireita->filhoEsquerda;
 
         nodo->filhoDireita->filhoDireita->altura = atualizar_altura(nodo->filhoDireita->filhoDireita); //h do 2
         newRaiz->altura = atualizar_altura(newRaiz); //h do 3
-
-        //nodo->filhoEsquerda = newRaiz;
-        //newRaiz->filhoDireita = nodo->filhoEsquerda->filhoDireita;
-
-        //newRaiz->filhoDireita = nodo;
+        
         nodo->filhoDireita = newRaiz->filhoEsquerda; //ta null o 3
         newRaiz->filhoEsquerda = nodo;
 
@@ -187,26 +176,17 @@ class MinhaArvoreAVL final : public ArvoreBinariaDeBusca<T>
         newRaiz->filhoEsquerda = nodo->filhoEsquerda;
         nodo->filhoEsquerda->filhoDireita = oldRaiz;
 
-        //newRaiz->filhoEsquerda->altura = atualizar_altura(nodo->filhoDireita);
-        //newRaiz->altura = atualizar_altura(newRaiz);
-
         nodo->filhoEsquerda = newRaiz;
         newRaiz->filhoDireita = nodo->filhoEsquerda->filhoDireita;
 
         nodo->filhoEsquerda->filhoEsquerda->altura = atualizar_altura(nodo->filhoEsquerda->filhoEsquerda); //h do 2
         newRaiz->altura = atualizar_altura(newRaiz); //h do 3
 
-        //nodo->filhoEsquerda = newRaiz;
-        //newRaiz->filhoDireita = nodo->filhoEsquerda->filhoDireita;
-
-        //newRaiz->filhoDireita = nodo;
         nodo->filhoEsquerda = newRaiz->filhoDireita; //ta null o 3
         newRaiz->filhoDireita = nodo;
 
         nodo->altura = atualizar_altura(nodo); // h do 4
         newRaiz->altura = atualizar_altura(newRaiz); // h do 3
-
-        //nodo->filhoEsquerda = newRaiz->filhoDireita->filhoDireita;
 
         return newRaiz;
     }
@@ -245,8 +225,6 @@ class MinhaArvoreAVL final : public ArvoreBinariaDeBusca<T>
         nodo->filhoEsquerda->filhoEsquerda = tmp->filhoDireita;
         tmp->filhoDireita->filhoEsquerda = nulo;
         nodo->filhoEsquerda = tmp;
-        //tmp->filhoDireita->altura = atualizar_altura(tmp->filhoDireita);
-        //tmp->altura = atualizar_altura(tmp);
         nodo->altura = atualizar_altura(nodo); 
         return tmp;  
     }
@@ -308,8 +286,7 @@ class MinhaArvoreAVL final : public ArvoreBinariaDeBusca<T>
                 else if(dirFilhoD > 0 && filhoD->filhoDireita->filhoEsquerda != nullptr){
                     int filhoDirEsq = get_fatorB(this->raiz->filhoDireita->filhoEsquerda);
                     if(filhoDirEsq >= 0){
-                        filhoD->filhoDireita->filhoDireita->filhoDireita->filhoDireita->filhoDireita = rot_dir_esq(filhoD);
-                        
+                        //sem inserção rotação direita-esquerda ;)
                     }
                 }
             }
